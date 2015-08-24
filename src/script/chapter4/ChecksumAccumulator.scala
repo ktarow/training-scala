@@ -1,4 +1,23 @@
+package chapter4
 
+import scala.collection.mutable.Map
+object ChecksumAccumulator {
+  private val cache = Map[String, Int]()
+  def calculate(s: String): Int  = {
+    if(cache.contains(s)) {
+      cache(s)
+    }else{
+      val acc = new ChecksumAccumulator
+      for (c <- s)
+        acc.add3(c.toByte)
+      val cs = acc.checksum2()
+      cache += (s -> cs)
+      cs
+    }
+  }
+}
+
+// コンパニオンクラス
 class ChecksumAccumulator {
   // デフォルトはpublic
   var sum = 0
@@ -30,3 +49,5 @@ val csa = new ChecksumAccumulator
 csa.sum = 1
 // オブジェクトの状態を変更することを明示的に不可能に
 // csa.sum2 = 2 (コンパイルエラー)
+
+ChecksumAccumulator.calculate("Every value is an object.")
