@@ -1,5 +1,3 @@
-package chapter4
-
 import scala.collection.mutable.Map
 object ChecksumAccumulator {
   private val cache = Map[String, Int]()
@@ -10,7 +8,7 @@ object ChecksumAccumulator {
       val acc = new ChecksumAccumulator
       for (c <- s)
         acc.add3(c.toByte)
-      val cs = acc.checksum2()
+      val cs = acc.checksum2
       cache += (s -> cs)
       cs
     }
