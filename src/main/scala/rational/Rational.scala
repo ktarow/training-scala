@@ -16,11 +16,40 @@ class Rational(n: Int, d: Int) {
     )
   }
 
-  def * (that: Rational) : Rational = {
+  def + (i: Int): Rational = {
+    new Rational(number + i * number, denom)
+  }
+
+  def * (that: Rational): Rational = {
     new Rational(
       number * that.number,
       denom * that.denom
     )
+  }
+
+  def * (i: Int): Rational = {
+    new Rational(number * i, denom)
+  }
+
+  def - (that: Rational): Rational = {
+    new Rational(
+      number * that.denom - that.number * denom,
+      denom * denom
+    )
+  }
+
+  def - (i: Int): Rational = {
+    new Rational(number - i * denom, denom)
+  }
+
+  def / (that: Rational): Rational = {
+    new Rational(
+      number * that.denom, that.number * denom
+    )
+  }
+
+  def / (i: Int): Rational = {
+    new Rational(number, denom * i)
   }
 
   private def gcd(a: Int, b: Int): Int = {
