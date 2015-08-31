@@ -7,7 +7,6 @@ def boom(x : Int): Int = {
 
 //boom(3)
 
-
 // 末尾再帰
 def bang(x: Int): Int = {
   if (x == 0) throw new Exception("bang!")
